@@ -224,7 +224,7 @@
                 Where <span class="gold-text">Timeless Elegance</span><br>Meets Nepalese Craftsmanship
             </h1>
             <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto fade-in" style="transition-delay: 0.2s;">
-                Handcrafted jewelry pieces that embody the rich heritage and exquisite artistry of Nepal.
+                Handcrafted jewelry pieces that embody the rich heritage and exquisite artistry of Nepal. 
             </p>
             <div class="fade-in" style="transition-delay: 0.4s;">
                 <a href="#collections" class="btn-gold inline-block gold-bg text-black font-semibold px-8 py-3 rounded-sm text-lg relative overflow-hidden">
@@ -287,11 +287,11 @@
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 gold-text relative inline-block">
-                    New Arrivals
+                    Our Best Seller's
                     <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gold-500 transform translate-y-1"></span>
                 </h2>
                 <p class="text-gray-300 max-w-2xl mx-auto">
-                    Discover the latest range of exquisite handcrafted jewelry, each piece a testament to Nepalese artistry.
+                    Discover the best, the best has to offer with Bishwolaxmi Jewellery.
                 </p>
             </div>
             
@@ -312,9 +312,7 @@
                     <p class="text-gray-400 mb-4">Traditional Nepalese designs in 22K gold</p>
                     <div class="flex justify-between items-center">
                         <span class="gold-text font-medium text-lg">Starting at $1,200</span>
-                        <button class="collection-btn gold-border border px-4 py-1 text-sm hover:bg-gold-900 hover:text-white transition">
-                            View Details
-                        </button>
+                        
                     </div>
                 </div>
                 
@@ -334,9 +332,7 @@
                     <p class="text-gray-400 mb-4">Exquisite diamonds set in premium gold</p>
                     <div class="flex justify-between items-center">
                         <span class="gold-text font-medium">Starting at $2,500</span>
-                        <button class="collection-btn gold-border border px-4 py-1 text-sm hover:bg-gold-900 transition">
-                            View Details
-                        </button>
+                      
                     </div>
                 </div>
                 
@@ -356,18 +352,20 @@
                     <p class="text-gray-400 mb-4">Handcrafted sterling silver with traditional motifs</p>
                     <div class="flex justify-between items-center">
                         <span class="gold-text font-medium">Starting at $450</span>
-                        <button class="collection-btn gold-border border px-4 py-1 text-sm hover:bg-gold-900 transition">
-                            View Details
-                        </button>
+                      
                     </div>
                 </div>
             </div>
             
             <div class="text-center mt-16 fade-in" style="transition-delay: 0.6s;">
-                <a href="#" class="inline-flex items-center gold-border border gold-text px-8 py-3 hover:bg-gold-900 hover:bg-opacity-10 transition">
+                <a href="extra2.html" class="inline-flex items-center gold-border border gold-text px-8 py-3 hover:bg-gold-900 hover:bg-opacity-10 transition">
                     View All Collections
                     <i class="fas fa-chevron-right ml-2"></i>
                 </a>
+            </div>
+        </div>
+    </section>
+ </a>
             </div>
         </div>
     </section>
@@ -381,7 +379,7 @@
                     <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gold-500 transform translate-y-1"></span>
                 </h2>
                 <p class="text-gray-300 max-w-2xl mx-auto">
-                    Hear from our valued clients about their experience with Bishow Laxmi Jewellery.
+                    Hear from our valued clients about their experience with Bishowlaxmi Jewellery.
                 </p>
             </div>
             
@@ -472,11 +470,13 @@
             </div>
         </div>
     </section>
+    
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gray-900">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row">
+                
                 <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10 fade-in">
                     <h2 class="text-3xl md:text-4xl font-bold mb-6 gold-text relative inline-block">
                         Contact Us
@@ -511,6 +511,7 @@
                             <i class="fas fa-envelope gold-text mr-3"></i>
                             info@bishowlaxmijewellery.com
                         </p>
+                        
                     </div>
                     
                     <div>
@@ -595,7 +596,7 @@
         <div class="flex justify-center">
             <div class="text-center">
                 <div class="flex items-center justify-center mb-4">
-                    <span class="text-2xl font-bold gold-text">Bishow Laxmi</span>
+                    <span class="text-2xl font-bold gold-text">Bishowlaxmi</span>
                     <span class="text-2xl font-bold ml-1">Jewellery</span>
                 </div>
                 <p class="text-gray-400 mb-4">Timeless Nepalese Craftsmanship Since 1985</p>
@@ -811,12 +812,22 @@ document.addEventListener('DOMContentLoaded', updateGoldPrices);
         }, 3000);
         }
 
-        // Form submission
+        // Form submission with cooldown
         const contactForm = document.querySelector('form');
+        let isCooldown = false;
 
         if (contactForm) {
         contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
+
+            if (isCooldown) {
+            showToast('Please wait before submitting again.');
+            return;
+            }
+
+            // Start cooldown immediately
+            isCooldown = true;
+            contactForm.querySelectorAll('input, textarea, button, select').forEach((el) => el.disabled = true);
 
             const inquiry = {
             name: document.getElementById('name').value.trim(),
@@ -829,7 +840,7 @@ document.addEventListener('DOMContentLoaded', updateGoldPrices);
             try {
             await fetch('https://script.google.com/macros/s/AKfycbyQ7gP9U2SsYZC-4LzGQ_OA1T2tgEz5rl_BJLYvgfQ-koNx1ZG_6cADzx9UbKW72Q7RpQ/exec', {
                 method: 'POST',
-                mode: 'no-cors', // Important to avoid CORS errors
+                mode: 'no-cors',
                 headers: {
                 'Content-Type': 'application/json'
                 },
@@ -843,6 +854,12 @@ document.addEventListener('DOMContentLoaded', updateGoldPrices);
             showToast('Error connecting to Google Sheets.');
             console.error(error);
             }
+
+            // End cooldown after 10 seconds
+            setTimeout(() => {
+            isCooldown = false;
+            contactForm.querySelectorAll('input, textarea, button, select').forEach((el) => el.disabled = false);
+            }, 10000);
         });
         }
 
